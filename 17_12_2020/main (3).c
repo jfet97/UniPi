@@ -31,7 +31,7 @@ void freeMatrix(int ** matrix, int rowLen);
 
 
 int main(void) {
-
+	
 	// read and store the dimensions for the first matrix
 	int matrix1RowLen;
 	int matrix1ColLen;

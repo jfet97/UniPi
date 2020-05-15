@@ -76,7 +76,6 @@ int main() {
     SmartArray_delete(&smartArrayT1);
     printf("should be NULL %p\n", smartArrayT1);
     puts("-------------------------------------------------------------------------------------------");
-
     SmartArray smartArrayT2 = SmartArray_create(10);
     puts("smartArrayT2");
     printf("length should be 10 %d\n", SmartArray_getLength(smartArrayT2));
@@ -412,8 +411,12 @@ int main() {
     puts("smartArrayT13");
     SmartArray_print(smartArrayT13);
     SmartArray_forEachR(smartArrayT13, printForEachCallback);
-    printf("should be 0 %d\n", SmartArray_getLength(SmartArray_map(smartArrayT13, doubleProjection)));
-    printf("should be 0 %d\n", SmartArray_getLength(SmartArray_filter(smartArrayT13, doubleProjection)));
+    SmartArray mapped = (SmartArray_map(smartArrayT13, doubleProjection));
+    printf("should be 0 %d\n", SmartArray_getLength(mapped));
+    SmartArray_delete(&mapped);
+    SmartArray filtered = SmartArray_filter(smartArrayT13, isEvenPredicate);
+    printf("should be 0 %d\n", SmartArray_getLength(filtered));
+    SmartArray_delete(&filtered);
     int total = 0;
     printf("should be 0 %d\n", *((int*)SmartArray_reduce(smartArrayT13, sumReducer, &total)));
     printf("should be 0 %d\n", total);

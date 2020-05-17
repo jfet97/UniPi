@@ -17,7 +17,7 @@ typedef struct ListEntity {
 typedef ListEntity* List;
 
 // node
-Node* Node_create();
+Node* Node_create(int, Node*, Node*);
 void Node_free(Node**);
 
 // list

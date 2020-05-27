@@ -43,11 +43,8 @@ void ABR__free(Node** nodePtr) {
     assert(nodePtr);
     if ((*nodePtr) != NULL) {
         ABR__free(&(*nodePtr)->left);
-
         ABR__free(&(*nodePtr)->right);
-
         Node_free(nodePtr);
-        *nodePtr = NULL;
     }
 }
 

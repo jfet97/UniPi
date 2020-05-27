@@ -4,13 +4,13 @@
 
 typedef struct GraphNode {
     size_t id;
-    size_t edgesSize;  // lunghezza dell'array edges
+    size_t edgesSize;
     size_t* edges;
     int color;  // White:0 - Gray:1 - Black:2
 } GraphNode;
 
 typedef struct Graph {
-    size_t nodesSize;  // lunghezza dell'array nodes
+    size_t nodesSize;
     GraphNode** nodes;
 } Graph;
 
@@ -63,57 +63,6 @@ void Graph_print(Graph* graph) {
 
         puts("");
     }
-}
-
-// -----------------------------------------------------------------------------------
-// DFS
-
-void Graph__DFS_resetColors(Graph* graph) {
-    // reset colors to 0 aka White
-    for (size_t i = 0; i < graph->nodesSize; i++) {
-        graph->nodes[i]->color = 0;
-    }
-}
-
-void Graph__DFS_recursive(Graph* graph, size_t nodeId) {
-    GraphNode* node = graph->nodes[nodeId];
-    node->color = 1;  // set the color to 1 aka Gray
-    // printf("Start DFS on node %lu\n", node->id);
-
-    for (size_t i = 0; i < node->edgesSize; i++) {
-        size_t adjacentNodeId = node->edges[i];
-        GraphNode* adjacentNode = graph->nodes[adjacentNodeId];
-
-        if (adjacentNode->color == 0) {
-            Graph__DFS_recursive(graph, adjacentNodeId);
-        }
-    }
-
-    node->color = 2;  // set the color to 2 aka Gray
-    // printf("End DFS on node %lu\n", node->id);
-}
-
-void Graph_DFS(Graph* graph) {
-    Graph__DFS_resetColors(graph);
-
-    // recursive DFS
-    for (size_t i = 0; i < graph->nodesSize; i++) {
-        if (graph->nodes[i]->color == 0) {  // iif the node is still White
-            Graph__DFS_recursive(graph, i);
-        }
-    }
-}
-
-void Graph_DFS_from(Graph* graph, size_t nodeId) {
-    if (nodeId < 0 || nodeId >= graph->nodesSize) {
-        return;
-    }
-
-    Graph__DFS_resetColors(graph);
-
-    // recursive DFS only from the selected node
-
-    Graph__DFS_recursive(graph, nodeId);
 }
 
 // -----------------------------------------------------------------------------------
@@ -276,20 +225,11 @@ void Queue_print(Queue* queue) {
     return;
 }
 
-// -----------------------------------------------------------------------------
-// BFS
-
-void Graph__BFS_resetColors(Graph* graph) {
-    // reset colors to 0 aka White
-    for (size_t i = 0; i < graph->nodesSize; i++) {
-        graph->nodes[i]->color = 0;
-    }
-}
-
-int* Graph_BFS(Graph* graph, size_t sourceNodeId) {
-    Graph__BFS_resetColors(graph);
-    // set the source's color to 1 aka Gray
-    graph->nodes[sourceNodeId]->color = 1;
+// -----------------------------------------------------------------------------------
+// max distance from a node
+int Graph_maxDistanceFrom(Graph* graph, size_t sourceNodeId) {
+    int maxDistance = 0;
+    int counter = 0;
 
     int* distances = malloc(sizeof(*distances) * graph->nodesSize);
     assert(distances);
@@ -297,7 +237,6 @@ int* Graph_BFS(Graph* graph, size_t sourceNodeId) {
     for (size_t i = 0; i < graph->nodesSize; i++) {
         distances[i] = -1;
     }
-    // set the distance of the source from itself to 0
     distances[sourceNodeId] = 0;
 
     Queue* queue = Queue_create();
@@ -306,26 +245,26 @@ int* Graph_BFS(Graph* graph, size_t sourceNodeId) {
     while (Queue_length(queue) > 0) {
         size_t nodeId = Queue_dequeue(queue);
         GraphNode* node = graph->nodes[nodeId];
-        // printf("Start BFS on node %lu\n", node->id);
 
         for (size_t i = 0; i < node->edgesSize; i++) {
             size_t adjacentNodeId = node->edges[i];
-            GraphNode* adjacentNode = graph->nodes[adjacentNodeId];
 
-            if (adjacentNode->color == 0) {  // iif the adjacent node is still white
-                adjacentNode->color = 1;     // set the adjacent node's color to 1 aka Gray
+            if (distances[adjacentNodeId] == -1) {  // iif the adjacent node is still white
                 distances[adjacentNodeId] = distances[nodeId] + 1;
+
+                if (distances[adjacentNodeId] > maxDistance) {
+                    maxDistance = distances[adjacentNodeId];
+                    counter = 1;
+                } else if (distances[adjacentNodeId] == maxDistance) {
+                    counter++;
+                }
+
                 Queue_enqueue(queue, adjacentNodeId);
             }
         }
-
-        graph->nodes[nodeId]->color = 2;  // set the current node's color to 2 aka Black
-        // printf("End BFS on node %lu\n", node->id);
     }
 
-    Queue_delete(&queue);
-
-    return distances;
+    return counter;
 }
 
 // -----------------------------------------------------------------------------------
@@ -362,28 +301,7 @@ Graph* readGraphFromSTDIN() {
 int main() {
     Graph* graph = readGraphFromSTDIN();
 
-    puts("\nthe graph\n");
-    Graph_print(graph);
-
-    puts("\nglobal DFS\n");
-    Graph_DFS(graph);
-    puts("\nthe graph\n");
-    Graph_print(graph);
-
-    puts("\nfrom 0 DFS\n");
-    Graph_DFS_from(graph, 0);
-    puts("\nthe graph\n");
-    Graph_print(graph);
-
-    puts("\n\nfrom 0 BFS\n");
-    int* distancesFrom0 = Graph_BFS(graph, 0);
-    puts("");
-    for (size_t i = 0; i < graph->nodesSize; i++) {
-        printf("Il nodo %lu dista %d dalla sorgente (il nodo 0)\n", i, distancesFrom0[i]);
-    }
-    free(distancesFrom0);
-    puts("\nthe graph\n");
-    Graph_print(graph);
+    // Graph_maxDistanceFrom(graph, nodeId));
 
     Graph_free(&graph);
 }

@@ -4,13 +4,13 @@
 
 typedef struct GraphNode {
     size_t id;
-    size_t edgesSize;  // lunghezza dell'array edges
+    size_t edgesSize;
     size_t* edges;
     int color;  // White:0 - Gray:1 - Black:2
 } GraphNode;
 
 typedef struct Graph {
-    size_t nodesSize;  // lunghezza dell'array nodes
+    size_t nodesSize;
     GraphNode** nodes;
 } Graph;
 
@@ -63,57 +63,6 @@ void Graph_print(Graph* graph) {
 
         puts("");
     }
-}
-
-// -----------------------------------------------------------------------------------
-// DFS
-
-void Graph__DFS_resetColors(Graph* graph) {
-    // reset colors to 0 aka White
-    for (size_t i = 0; i < graph->nodesSize; i++) {
-        graph->nodes[i]->color = 0;
-    }
-}
-
-void Graph__DFS_recursive(Graph* graph, size_t nodeId) {
-    GraphNode* node = graph->nodes[nodeId];
-    node->color = 1;  // set the color to 1 aka Gray
-    // printf("Start DFS on node %lu\n", node->id);
-
-    for (size_t i = 0; i < node->edgesSize; i++) {
-        size_t adjacentNodeId = node->edges[i];
-        GraphNode* adjacentNode = graph->nodes[adjacentNodeId];
-
-        if (adjacentNode->color == 0) {
-            Graph__DFS_recursive(graph, adjacentNodeId);
-        }
-    }
-
-    node->color = 2;  // set the color to 2 aka Gray
-    // printf("End DFS on node %lu\n", node->id);
-}
-
-void Graph_DFS(Graph* graph) {
-    Graph__DFS_resetColors(graph);
-
-    // recursive DFS
-    for (size_t i = 0; i < graph->nodesSize; i++) {
-        if (graph->nodes[i]->color == 0) {  // iif the node is still White
-            Graph__DFS_recursive(graph, i);
-        }
-    }
-}
-
-void Graph_DFS_from(Graph* graph, size_t nodeId) {
-    if (nodeId < 0 || nodeId >= graph->nodesSize) {
-        return;
-    }
-
-    Graph__DFS_resetColors(graph);
-
-    // recursive DFS only from the selected node
-
-    Graph__DFS_recursive(graph, nodeId);
 }
 
 // -----------------------------------------------------------------------------------
@@ -362,28 +311,18 @@ Graph* readGraphFromSTDIN() {
 int main() {
     Graph* graph = readGraphFromSTDIN();
 
-    puts("\nthe graph\n");
-    Graph_print(graph);
+    int* distances = Graph_BFS(graph, 0);
 
-    puts("\nglobal DFS\n");
-    Graph_DFS(graph);
-    puts("\nthe graph\n");
-    Graph_print(graph);
-
-    puts("\nfrom 0 DFS\n");
-    Graph_DFS_from(graph, 0);
-    puts("\nthe graph\n");
-    Graph_print(graph);
-
-    puts("\n\nfrom 0 BFS\n");
-    int* distancesFrom0 = Graph_BFS(graph, 0);
-    puts("");
-    for (size_t i = 0; i < graph->nodesSize; i++) {
-        printf("Il nodo %lu dista %d dalla sorgente (il nodo 0)\n", i, distancesFrom0[i]);
+    int wasConnected = 1;
+    for (size_t i = 0; i < graph->nodesSize && wasConnected; i++) {
+        if (distances[i] == -1) {
+            wasConnected = 0;
+        }
     }
-    free(distancesFrom0);
-    puts("\nthe graph\n");
-    Graph_print(graph);
+
+    printf("%d\n", wasConnected);
+
+    free(distances);
 
     Graph_free(&graph);
 }

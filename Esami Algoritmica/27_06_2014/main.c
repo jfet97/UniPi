@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAXLEN 101
-#define MAXLEN2 21
+#define MAXLEN 102
+#define MAXLEN2 22
 
 // Object
 typedef struct Object {

@@ -45,7 +45,6 @@ void ABR__free(Node** nodePtr) {
         ABR__free(&(*nodePtr)->left);
         ABR__free(&(*nodePtr)->right);
         Node_free(nodePtr);
-        *nodePtr = NULL;
     }
 }
 

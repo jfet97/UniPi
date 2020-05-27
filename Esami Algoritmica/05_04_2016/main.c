@@ -62,7 +62,6 @@ Node* Node_create(Object* object, Node* left, Node* right) {
 }
 
 void Node_free(Node** nodePtr) {
-    assert(nodePtr != NULL);
     Object_free(&(*nodePtr)->object);
     free(*nodePtr);
     *nodePtr = NULL;
@@ -82,7 +81,6 @@ void ABR__free(Node** nodePtr) {
         ABR__free(&(*nodePtr)->left);
         ABR__free(&(*nodePtr)->right);
         Node_free(nodePtr);
-        *nodePtr = NULL;
     }
 }
 

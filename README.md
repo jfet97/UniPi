@@ -1,2 +1,2 @@
-# UniPi_FallimentiPersonali
-Lascia perdere
+# UniPi
+Raccolta liberamente fruibile di esami svolti ed esercizi vari.

@@ -4,7 +4,7 @@
 
 Sono presenti le soluzioni a tutti gli esami affrontabili sulle varie piattaforme, ovvero la [19/20](http://algo1920.dijkstra.di.unipi.it/) e la [16/17](http://algo1617.dijkstra.di.unipi.it/). Ho aggiunto anche le soluzioni sia per l'esame di Febbraio 2020, sia per l'esame di Maggio 2020.
 
-Inoltre ho inserito alcune implementazioni delle strutture dati che abbiamo esaminato: lista mono e bidirezionale, queue con array e con lista bidirezionale, stack con array e con lista bidirezionale, un abbozzo di heap, una versione custom di un array dinamico e il grafo con annesse DFS e BFS. Per quanto riguarda ABR e Dizionari ci sono sufficienti esempi di implementazione negli esami svolti.
+Inoltre ho inserito alcune implementazioni delle strutture dati che abbiamo esaminato: lista mono e bidirezionale, queue con array e con lista bidirezionale, stack con array e con lista bidirezionale, un abbozzo di heap, una versione custom di un array dinamico e il grafo con annesse DFS e BFS. Per quanto riguarda ABR e dizionari ci sono sufficienti esempi di implementazione negli esami svolti.
 
 Oltre a ciò è presente un discreto numero di esercizi riguardanti i grafi con qualche aggiunta di alcuni esercizi che abbiamo visto solo a teoria, come ad esempio controllare se un cammino da x a z passa per un nodo y, oppure controllare se un grafo indiretto è un albero o anche come sfruttare un dizionario al posto di colorare i vertici per le visite.
 &nbsp;

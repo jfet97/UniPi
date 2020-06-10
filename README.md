@@ -2,7 +2,7 @@
 
 ## Anno accademico 2019/2020
 
-Sono presenti le soluzioni a tutti gli esami affrontabili sulle varie piattaforme, ovvero la [19/20](http://algo1920.dijkstra.di.unipi.it/) e la [16/17](http://algo1617.dijkstra.di.unipi.it/). Ho aggiunto anche le soluzioni sia per l'esame di Febbraio 2020, sia per l'esame più recente del 26 Maggio.
+Sono presenti le soluzioni a tutti gli esami affrontabili sulle varie piattaforme, ovvero la [19/20](http://algo1920.dijkstra.di.unipi.it/) e la [16/17](http://algo1617.dijkstra.di.unipi.it/). Ho aggiunto anche le soluzioni sia per l'esame di Febbraio 2020, sia per l'esame di Maggio 2020.
 
 Inoltre ho inserito alcune implementazioni delle strutture dati che abbiamo esaminato: lista mono e bidirezionale, queue con array e con lista bidirezionale, stack con array e con lista bidirezionale, un abbozzo di heap, una versione custom di un array dinamico e il grafo con annesse DFS e BFS. Per quanto riguarda ABR e Dizionari ci sono sufficienti esempi di implementazione negli esami svolti.
 

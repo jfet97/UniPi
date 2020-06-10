@@ -1,0 +1,4 @@
+Categoria 2: vince candidato 1.
+Categoria 5: vince candidato 3.
+Categoria 1: vince candidato 3.
+Vincitore globale: candidato 3.

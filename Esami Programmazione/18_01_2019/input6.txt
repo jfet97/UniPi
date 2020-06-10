@@ -1,0 +1,5 @@
+Rossi;Maria;20
+xxx;xxx;-1
+Rossi;Maria;40
+xxx;xxx;-1
+Rossi

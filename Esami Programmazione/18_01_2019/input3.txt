@@ -1,0 +1,8 @@
+Galli;Veronica;19
+Rizzi;Giovanni;20
+Buonafede;Marta;23
+Rossi;Mario;25
+xxx;xxx;-1
+Rossi;Mario;25
+xxx;xxx;-1
+Galli

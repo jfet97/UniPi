@@ -1,0 +1,2 @@
+Categoria 1: vince candidato 3.
+Vincitore globale: candidato 3.

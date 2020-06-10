@@ -1,0 +1,2 @@
+Indice di somma massima: 22
+Valore di somma massima: 370.00

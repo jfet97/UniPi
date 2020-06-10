@@ -1,0 +1,12 @@
+xxx;xxx;-1
+Agnesi;Luigi;20
+Rossi;Veronica;28
+Russo;Mario;27
+Verdi;Veronica;28
+Rossi;Luigi;27
+Bianchi;Mario;25
+Agnesi;Alessandro;20
+Rossa;Vanessa;28
+Russo;Marta;27
+xxx;xxx;-1
+Neri

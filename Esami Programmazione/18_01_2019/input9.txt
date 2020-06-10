@@ -1,0 +1,14 @@
+Galli;Giulia;19
+Rizzi;Giovanni;20
+Rossi;Maria;23
+Rossi;Mario;25
+Agnesi;Veronica;20
+Russo;Valentina;27
+xxx;xxx;-1
+Rossi;Mario;25
+Rossi;Maria;25
+Agnesi;Veronica;18
+Galli;Giulia;19
+Rizzi;Giovanni;20
+xxx;xxx;-1
+Russo

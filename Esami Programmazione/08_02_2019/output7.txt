@@ -1,0 +1,2 @@
+Indice di somma massima: 0
+Valore di somma massima: 3.00

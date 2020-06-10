@@ -1,0 +1,15 @@
+Verdi;Alessandro;18
+Rossi;Mirko;30
+Agnesi;Luigi;20
+Rossa;Veronica;28
+Russo;Mario;27
+Rossi;Mario;25
+Galli;Veronica;19
+Rizzi;Giovanni;20
+Rossi;Marta;23
+xxx;xxx;-1
+Rossi;Mario;25
+Galli;Veronica;19
+Agnesi;Luigi;20
+xxx;xxx;-1
+Rossi

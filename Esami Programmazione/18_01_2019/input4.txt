@@ -1,0 +1,11 @@
+Galli;Veronica;19
+Rizzi;Giovanni;20
+Buonafede;Marta;23
+Rossi;Mario;25
+Agnesi;Veronica;20
+Russo;Valentina;27
+xxx;xxx;-1
+Rossi;Mario;25
+Agnesi;Veronica;18
+xxx;xxx;-1
+Rizzi

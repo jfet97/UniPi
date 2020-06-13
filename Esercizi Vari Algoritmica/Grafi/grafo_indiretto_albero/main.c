@@ -144,6 +144,8 @@ int Graph_isTree(Graph* graph) {
     }
 
     int hasCycle = Graph_DFS_hasCycles(graph, 0, parents);
+    
+    free(parents);
 
     if (hasCycle == 1) {
         return 0;

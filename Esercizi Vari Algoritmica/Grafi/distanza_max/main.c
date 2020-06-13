@@ -301,7 +301,7 @@ Graph* readGraphFromSTDIN() {
 int main() {
     Graph* graph = readGraphFromSTDIN();
 
-    // Graph_maxDistanceFrom(graph, nodeId));
+    Graph_maxDistanceFrom(graph, nodeId));
 
     Graph_free(&graph);
 }
